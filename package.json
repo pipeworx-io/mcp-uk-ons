@@ -1,20 +1,32 @@
 {
   "name": "@pipeworx/mcp-uk-ons",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "UK ONS MCP — Office for National Statistics (no auth)",
   "type": "module",
   "main": "src/index.ts",
   "types": "src/index.ts",
+  "bin": {
+    "mcp-uk-ons": "bin/cli.js"
+  },
   "keywords": ["mcp", "mcp-server", "model-context-protocol", "pipeworx", "uk-ons"],
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pipeworx-io/mcp-uk-ons"
+    "url": "git+https://github.com/pipeworx-io/mcp-uk-ons.git"
   },
   "scripts": {
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.30.0",
+    "tsx": "^4.19.0"
+  },
   "devDependencies": {
-    "typescript": "^5.7.0"
+    "typescript": "^5.9.3",
+    "@cloudflare/workers-types": "^4.20260405.1"
+  },
+  "pipeworx": {
+    "sourceHash": "v1-6427b35193cbded25ad618983d6d28aaa712c3d7db4304a0c3eecb9ab2812012",
+    "sourceCommit": "b0fb3c31386cf0256dcf1e2f1b3440435a87ec35"
   }
 }
