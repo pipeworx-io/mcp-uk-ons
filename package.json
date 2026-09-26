@@ -1,6 +1,6 @@
 {
   "name": "@pipeworx/mcp-uk-ons",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "UK ONS MCP — Office for National Statistics (no auth)",
   "type": "module",
   "main": "src/index.ts",
@@ -26,7 +26,7 @@
     "@cloudflare/workers-types": "^4.20260405.1"
   },
   "pipeworx": {
-    "sourceHash": "v1-6427b35193cbded25ad618983d6d28aaa712c3d7db4304a0c3eecb9ab2812012",
-    "sourceCommit": "b0fb3c31386cf0256dcf1e2f1b3440435a87ec35"
+    "sourceHash": "v1-82708ee78b78989a5a24bfbe7e18c0f7c110a2d83674655497688e3a5b6a67fe",
+    "sourceCommit": "66a0692f029179984440cef6938cba7fdd41d66d"
   }
 }
