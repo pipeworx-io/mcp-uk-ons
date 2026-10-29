@@ -1,0 +1,125 @@
+[
+  {
+    "name": "list_datasets",
+    "description": "Paginated catalog of ONS datasets. Returns id, title, description, contacts, release frequency, last release, theme.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "limit": {
+          "type": "number",
+          "description": "1-100 (default 20)"
+        },
+        "offset": {
+          "type": "number",
+          "description": "0-based offset (default 0)"
+        }
+      },
+      "required": []
+    }
+  },
+  {
+    "name": "get_dataset",
+    "description": "Single dataset metadata: title, description, methodology, contacts, release frequency, latest version, related links.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "description": "ONS dataset ID (e.g., \"cpih01\", \"ashe-table-1\")"
+        }
+      },
+      "required": [
+        "dataset_id"
+      ]
+    }
+  },
+  {
+    "name": "list_editions",
+    "description": "List all named editions of an ONS dataset (e.g., \"time-series\", \"annual\"). Returns each edition label, release date, state, and the latest version ID to use with get_version or get_observations.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "description": "ONS dataset ID"
+        }
+      },
+      "required": [
+        "dataset_id"
+      ]
+    }
+  },
+  {
+    "name": "get_version",
+    "description": "Fetch metadata for a specific version of an ONS dataset edition, including dimension definitions with codelist links, CSV/XLS download URLs, release date, and publication state.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "description": "ONS dataset ID"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Edition label"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version (e.g., \"1\", \"2\")"
+        }
+      },
+      "required": [
+        "dataset_id",
+        "edition",
+        "version"
+      ]
+    }
+  },
+  {
+    "name": "get_observations",
+    "description": "Fetch observations from a dataset/edition/version. Pass dimension filters as `dimensions` map ({\"geography\": \"K02000001\", \"time\": \"2023\"}). Use `*` for \"all values\" within a dimension.",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "dataset_id": {
+          "type": "string",
+          "description": "ONS dataset ID"
+        },
+        "edition": {
+          "type": "string",
+          "description": "Edition label"
+        },
+        "version": {
+          "type": "string",
+          "description": "Version"
+        },
+        "dimensions": {
+          "type": "object",
+          "description": "Dimension code → value (or \"*\" for all). Example: {\"geography\":\"K02000001\",\"time\":\"2023\"}."
+        }
+      },
+      "required": [
+        "dataset_id",
+        "edition",
+        "version",
+        "dimensions"
+      ]
+    }
+  },
+  {
+    "name": "ons_timeseries",
+    "description": "Fetch a single UK ONS time series by its www.ons.gov.uk URI (the classic timeseries API, distinct from the filterable datasets above). Returns the full series JSON (description + observations). e.g. uri \"/economy/grossdomesticproductgdp/timeseries/abmi/pn2\". (Named ons_timeseries — get_series is used by many other economic-data packs.)",
+    "inputSchema": {
+      "type": "object",
+      "properties": {
+        "uri": {
+          "type": "string",
+          "description": "ONS timeseries URI, e.g. \"/economy/grossdomesticproductgdp/timeseries/abmi/pn2\"."
+        }
+      },
+      "required": [
+        "uri"
+      ]
+    }
+  }
+]
